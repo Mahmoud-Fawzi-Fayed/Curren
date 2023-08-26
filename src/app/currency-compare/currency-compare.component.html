@@ -5,23 +5,24 @@
         <div class="field">
         <div class="amount">
             <p class="amount-text">Amount</p>
+
             <input
             class="amount-input"
             type="text"
             [(ngModel)]="amount"
             name="amount"
             />
+
         </div>
         <div class="select-box">
             <div class="select-field">
             <p>From</p>
             <div class="img">
 
-                <label>from</label>
                 <app-currency-selector
-                #from
+                #from1
                 [selectorId]="'selectedFromCurrency'"
-                [changeCurrency]="selectFrom"
+                [changeCurrency]="selectFrom1"
             ></app-currency-selector>
             
             </div>
@@ -36,7 +37,7 @@
             <div class="Target-Currency">
                 <div class="img">
                 <app-currency-selector
-                #to
+                #to_one
                 [selectorId]="'selectedFirstTargetCurrency'"
                 [changeCurrency]="select_to_one"
             ></app-currency-selector>
@@ -45,7 +46,7 @@
                 <div class="img">
                     <p>Target Currency</p>
                 <app-currency-selector
-                #to
+                #to_two
                 [selectorId]="'selectedSecondTargetCurrency'"
                 [changeCurrency]="select_to_two"
             ></app-currency-selector>
@@ -82,4 +83,3 @@
     </div>
     </form>
 </div>
-<router-outlet></router-outlet>

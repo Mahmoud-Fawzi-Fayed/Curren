@@ -1,6 +1,11 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild,}from '@angular/core';
+import { ChangeDetectorRef, Component, Injectable, Input, OnInit, ViewChild,}from '@angular/core';
 import { Currency } from '../Currency';
 import { CurrencyServiceComponent } from '../currency-service/currency-service.component';
+
+
+@Injectable({
+  providedIn: 'root',
+})
 
 @Component({
   selector: 'app-currency-selector',
@@ -15,7 +20,7 @@ export class CurrencySelectorComponent implements OnInit {
   @Input() changeCurrency;
   @Input() selectorId;
 
-  currencies;
+  public  currencies;
 
   public selectedCurrency;
   public elementCurrenciesList;
@@ -74,8 +79,8 @@ export class CurrencySelectorComponent implements OnInit {
   }
 
   private selectCurrencyOnStart() {
-    let data;
-    let localData = localStorage.getItem(this.selectorId);
+    var data;
+    var localData = localStorage.getItem(this.selectorId);
     if (localData)
       data = this.service
         .getCurrencies()
@@ -83,17 +88,11 @@ export class CurrencySelectorComponent implements OnInit {
     if (!data)
       data = this.service
         .getCurrencies()
-        .find(
-          (element) =>
-            element.name == (this.selectorId == 'from' ? '' : '')
-        );
+        .find( (element) => element.name == (this.selectorId == 'from' ? 'USD' : 'USD'));
     if (data) this.selectCurrency(data);
   }
 
   ngAfterViewInit(): void {
-    this.elementCurrenciesList = document.getElementById(
-      'currenciesList ' + this.selectorId
-    );
     this.selectCurrencyOnStart();
   }
 

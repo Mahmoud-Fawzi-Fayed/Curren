@@ -22,19 +22,23 @@ export class CurrencyCompareComponent {
     this.currencies = this.currencyService.getCurrencies();
   }
 
-  selectFrom = (selectedFromCurrency: Currency): void => {
-    this.selectedFromCurrency = selectedFromCurrency.name; // Store the selected currency's name
+  
+
+  selectFrom1 = (selectedFromCurrency: Currency): void => {
+    this.selectedFromCurrency = selectedFromCurrency.name;
   };
 
   select_to_one = (selectedFirstTargetCurrency: Currency): void => {
-    this.selectedFirstTargetCurrency = selectedFirstTargetCurrency.name; // Store the selected currency's name
+    this.selectedFirstTargetCurrency = selectedFirstTargetCurrency.name;
   };
 
   select_to_two = (selectedSecondTargetCurrency: Currency): void => {
-    this.selectedSecondTargetCurrency = selectedSecondTargetCurrency.name; // Store the selected currency's name
+    this.selectedSecondTargetCurrency = selectedSecondTargetCurrency.name;
   };
 
+
   compareCurrencies(): void {
+    localStorage.setItem('storedAmount', this.amount.toString());
 
     const fromCurrency = this.currencies.find(
       (currency) => currency.name === this.selectedFromCurrency
@@ -54,6 +58,13 @@ export class CurrencyCompareComponent {
       this.convertedAmountSecondTarget =
         (this.amount * secondTargetCurrency.rate) / fromCurrency.rate;
     }
-    
+
+  }
+
+  ngOnInit(): void {
+    const storedAmount = localStorage.getItem('storedAmount');
+    if (storedAmount !== null) {
+      this.amount = parseFloat(storedAmount);
+    }
   }
 }
