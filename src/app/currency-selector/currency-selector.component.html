@@ -12,9 +12,7 @@
         (ngModelChange)="valueFinding()" type="text" autofocus #search_input>
       <a id="clear" href="#" (click)='HideDropdown()'  class="bi bi-x-lg"></a>
     </div>
-
   </div>
-
 
   <ul [id]="'currenciesList ' + selectorId"  (mouseover)="ignoreFocusOut=currencies.length>0"
       (mouseout)="ignoreFocusOut=false"  class="dropdown-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenuButton">

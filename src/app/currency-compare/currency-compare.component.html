@@ -16,23 +16,14 @@
             <div class="select-field">
             <p>From</p>
             <div class="img">
-                <div
-                class="currency-flag currency-flag-{{
-                    selectedFromCurrency.toLowerCase()
-                }}"
-                ></div>
-                <select
-                class="text-field"
-                [(ngModel)]="selectedFromCurrency"
-                name="selectedFromCurrency"
-                >
-                <option
-                  *ngFor="let currency of currencies"
-                    [value]="currency.name"
-                >
-                    {{ currency.name}}{{ currency.full_name ? " - " + currency.full_name : "" }}
-                </option>
-                </select>
+
+                <label>from</label>
+                <app-currency-selector
+                #from
+                [selectorId]="'selectedFromCurrency'"
+                [changeCurrency]="selectFrom"
+            ></app-currency-selector>
+            
             </div>
             </div>
         </div>
@@ -44,43 +35,21 @@
             <p>Target Currency</p>
             <div class="Target-Currency">
                 <div class="img">
-                <div
-                    class="currency-flag currency-flag-{{
-                    selectedFirstTargetCurrency.toLowerCase()
-                    }}"
-                ></div>
-                <select
-                    class="text-field"
-                    [(ngModel)]="selectedFirstTargetCurrency"
-                    name="selectedFirstTargetCurrency"
-                >
-                    <option
-                    *ngFor="let currency of currencies"
-                    [value]="currency.name"
-                    >
-                    {{ currency.name}}{{ currency.full_name ? " - " + currency.full_name : "" }}
-                    </option>
-                </select>
+                <app-currency-selector
+                #to
+                [selectorId]="'selectedFirstTargetCurrency'"
+                [changeCurrency]="select_to_one"
+            ></app-currency-selector>
+
                 </div>
                 <div class="img">
                     <p>Target Currency</p>
-                <div
-                    class="currency-flag currency-flag-{{
-                    selectedSecondTargetCurrency.toLowerCase()
-                    }}"
-                ></div>
-                <select
-                    class="text-field"
-                    [(ngModel)]="selectedSecondTargetCurrency"
-                    name="selectedSecondTargetCurrency"
-                >
-                    <option
-                    *ngFor="let currency of currencies"
-                    [value]="currency.name"
-                    >
-                    {{ currency.name}}{{ currency.full_name ? " - " + currency.full_name : "" }}
-                    </option>
-                </select>
+                <app-currency-selector
+                #to
+                [selectorId]="'selectedSecondTargetCurrency'"
+                [changeCurrency]="select_to_two"
+            ></app-currency-selector>
+                
                 </div>
             </div>
             </div>

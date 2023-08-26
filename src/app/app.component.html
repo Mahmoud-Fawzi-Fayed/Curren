@@ -62,12 +62,12 @@
           </button>
 
           <label>To</label>
-
           <app-currency-selector
             #to
             [selectorId]="'to'"
             [changeCurrency]="selectTo"
           ></app-currency-selector>
+          
         </div>
         <div class="submit-btn" [style.width.px]="formExchange" #submitBtn>
           <button class="Submit" type="button" (click)="onConvertClick()">
