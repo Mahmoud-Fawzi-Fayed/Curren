@@ -1,19 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Currency } from '../Currency';
 import { CurrencyServiceComponent } from '../currency-service/currency-service.component';
-
 
 @Component({
   selector: 'app-currency-compare',
   templateUrl: './currency-compare.component.html',
-  styleUrls: ['./currency-compare.component.scss']
+  styleUrls: ['./currency-compare.component.scss',
+              '../../styles/default.scss'],
 })
-export class CurrencyCompareComponent implements OnInit {
+export class CurrencyCompareComponent {
+  currencies: Currency[] = [];
+  selectedFromCurrency: string = '';
+  selectedFirstTargetCurrency: string = '';
+  selectedSecondTargetCurrency: string = '';
+  amount: number = 1;
 
-  constructor() { }
+  convertedAmountFirstTarget: number = 0;
+  convertedAmountSecondTarget: number = 0;
 
-  ngOnInit(): void {
-    
+  constructor(private currencyService: CurrencyServiceComponent) {
+    this.currencies = this.currencyService.getCurrencies();
   }
 
+  compareCurrencies(): void {
+    const fromCurrency = this.currencies.find(
+      (currency) => currency.name === this.selectedFromCurrency
+    );
+    const firstTargetCurrency = this.currencies.find(
+      (currency) => currency.name === this.selectedFirstTargetCurrency
+    );
+    const secondTargetCurrency = this.currencies.find(
+      (currency) => currency.name === this.selectedSecondTargetCurrency
+    );
+
+    if (fromCurrency && firstTargetCurrency && secondTargetCurrency) {
+      this.convertedAmountFirstTarget =
+        (this.amount * firstTargetCurrency.rate) / fromCurrency.rate;
+      this.convertedAmountSecondTarget =
+        (this.amount * secondTargetCurrency.rate) / fromCurrency.rate;
+    }
+  }
 }

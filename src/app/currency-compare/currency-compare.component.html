@@ -1,0 +1,116 @@
+<div class="wrapper">
+    <div class="screens"></div>
+    <form action="#">
+    <div class="fields">
+        <div class="field">
+        <div class="amount">
+            <p class="amount-text">Amount</p>
+            <input
+            class="amount-input"
+            type="text"
+            [(ngModel)]="amount"
+            name="amount"
+            />
+        </div>
+        <div class="select-box">
+            <div class="select-field">
+            <p>From</p>
+            <div class="img">
+                <div
+                class="currency-flag currency-flag-{{
+                    selectedFromCurrency.toLowerCase()
+                }}"
+                ></div>
+                <select
+                class="text-field"
+                [(ngModel)]="selectedFromCurrency"
+                name="selectedFromCurrency"
+                >
+                <option
+                  *ngFor="let currency of currencies"
+                    [value]="currency.name"
+                >
+                    {{ currency.name}}{{ currency.full_name ? " - " + currency.full_name : "" }}
+                </option>
+                </select>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="field">
+        <div class="select-box">
+            <div class="select-field">
+            <p>Target Currency</p>
+            <div class="Target-Currency">
+                <div class="img">
+                <div
+                    class="currency-flag currency-flag-{{
+                    selectedFirstTargetCurrency.toLowerCase()
+                    }}"
+                ></div>
+                <select
+                    class="text-field"
+                    [(ngModel)]="selectedFirstTargetCurrency"
+                    name="selectedFirstTargetCurrency"
+                >
+                    <option
+                    *ngFor="let currency of currencies"
+                    [value]="currency.name"
+                    >
+                    {{ currency.name}}{{ currency.full_name ? " - " + currency.full_name : "" }}
+                    </option>
+                </select>
+                </div>
+                <div class="img">
+                    <p>Target Currency</p>
+                <div
+                    class="currency-flag currency-flag-{{
+                    selectedSecondTargetCurrency.toLowerCase()
+                    }}"
+                ></div>
+                <select
+                    class="text-field"
+                    [(ngModel)]="selectedSecondTargetCurrency"
+                    name="selectedSecondTargetCurrency"
+                >
+                    <option
+                    *ngFor="let currency of currencies"
+                    [value]="currency.name"
+                    >
+                    {{ currency.name}}{{ currency.full_name ? " - " + currency.full_name : "" }}
+                    </option>
+                </select>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="field">
+        <div class="amount">
+            <p class="amount-text">Amount</p>
+            <input
+            class="amount-input"
+            type="text"
+            [(ngModel)]="convertedAmountFirstTarget"
+            [readonly]="true"
+            name="convertedAmountFirstTarget"
+            />
+        </div>
+        <div class="amount">
+            <p class="amount-text">Amount</p>
+            <input
+            class="amount-input"
+            type="text"
+            [(ngModel)]="convertedAmountSecondTarget"
+            [readonly]="true"
+            name="convertedAmountSecondTarget"
+            />
+        </div>
+        </div>
+        <button class="Compare" (click)="compareCurrencies()">Compare</button>
+    </div>
+    </form>
+</div>
+<router-outlet></router-outlet>

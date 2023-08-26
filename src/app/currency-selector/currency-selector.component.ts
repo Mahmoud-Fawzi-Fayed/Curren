@@ -1,10 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, ViewChild,}from '@angular/core';
 import { Currency } from '../Currency';
 import { CurrencyServiceComponent } from '../currency-service/currency-service.component';
 
@@ -91,7 +85,7 @@ export class CurrencySelectorComponent implements OnInit {
         .getCurrencies()
         .find(
           (element) =>
-            element.name == (this.selectorId == 'from' ? 'EGP' : 'USD')
+            element.name == (this.selectorId == 'from' ? '' : '')
         );
     if (data) this.selectCurrency(data);
   }

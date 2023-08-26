@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Currency } from './Currency';
-import { Router } from '@angular/router';
 import { CurrencyServiceComponent } from './currency-service/currency-service.component';
 
 @Component({
@@ -9,30 +9,34 @@ import { CurrencyServiceComponent } from './currency-service/currency-service.co
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'currency-exchange';
   public isDataAvailable = false;
   public failedToLoad = false;
-  private _from;
-  private to;
-  public amount_value;
-  @ViewChild('from') fromCmp;
-  @ViewChild('to') toCmp;
-  @ViewChild('amount_input', { static: false }) amount_input;
-  @ViewChild('submitBtn', { static: false }) submitBtn;
-  @ViewChild('formExchange', { static: false }) formExchange;
-
+  private _from!: Currency;
+  private to!: Currency;
+  public amount_value!: string;
+  @ViewChild('from', { static: false })
+  fromCmp!: ElementRef;
+  @ViewChild('to', { static: false })
+  toCmp!: ElementRef;
+  @ViewChild('amount_input', { static: false })
+  amount_input!: ElementRef;
+  @ViewChild('submitBtn', { static: false })
+  submitBtn!: ElementRef;
+  @ViewChild('formExchange', { static: false })
+  formExchange!: ElementRef;
 
   activeButton: string = 'Convert';
 
-  public resultFrom;
-  public resultTo;
-  public resultInfo;
+  public resultFrom!: string;
+  public resultTo!: string;
+  public resultInfo!: string;
   public isResult = false;
-  public lastUpdate;
+  public lastUpdate!: string;
+
   get from_name() {
-    return this._from.name;
+    return this._from?.name;
   }
 
   constructor(
@@ -65,21 +69,21 @@ export class AppComponent implements OnInit, AfterViewInit {
   };
 
   changeAmountValue() {
-    this.amount_value = (Math.round(this.amount_value * 100) / 100).toFixed(2);
+    this.amount_value = (Math.round(+this.amount_value * 100) / 100).toFixed(2);
     localStorage.setItem('amount', this.amount_value);
     if (this.isResult) this.exchange();
   }
 
   public switchCurrencies() {
     let temp: Currency = this._from;
-    this.fromCmp.selectCurrency(this.to);
-    this.toCmp.selectCurrency(temp);
+    this.fromCmp.nativeElement.selectCurrency(this.to);
+    this.toCmp.nativeElement.selectCurrency(temp);
     if (this.isResult) this.exchange();
   }
 
   public exchange() {
     let rateBase = this.to.rate / this._from.rate;
-    let result = this.amount_value * rateBase;
+    let result = +this.amount_value * rateBase;
     this.resultFrom = this.amount_value + this._from.name + '=';
     this.resultTo = result.toFixed(2) + this.to.name;
   }
@@ -106,11 +110,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     const date = new Date(this.service.getLastUpdate());
     this.lastUpdate = date.toLocaleString() + ' UTC';
   }
-  
 
   windowResize(): void {
     this.submitBtn.nativeElement.style.width =
       this.formExchange.nativeElement.style.width;
   }
-  ngAfterViewInit(): void {}
 }
