@@ -4,6 +4,7 @@
   *ngIf="(appStateService.activeMode$ | async) === 'Compare'"
 >
   <form action="#">
+    <div class="switcher">
     <div class="Switch_CC">
       <button class="switch-button" (click)="setActiveButton('Convert')">
         Convert
@@ -17,6 +18,7 @@
         Compare
       </button>
     </div>
+  </div>
     <div class="groups">
       <div class="group-1">
         <div class="field-1">
@@ -56,13 +58,15 @@
           </div>
 
           <div class="select-box">
-            <p>Target currency</p>
+            <div class="select-field-1">
+              <p>Target currency</p>
 
-            <app-currency-selector
-              #to
-              [selectorId]="'selectedSecondTargetCurrency'"
-              [changeCurrency]="select_to_two"
-            ></app-currency-selector>
+              <app-currency-selector
+                #to
+                [selectorId]="'selectedSecondTargetCurrency'"
+                [changeCurrency]="select_to_two"
+              ></app-currency-selector>
+            </div>
           </div>
         </div>
 
@@ -76,7 +80,7 @@
               name="convertedAmountFirstTarget"
             />
           </div>
-          <div class="amount">
+          <div class="amount-1">
             <input
               class="amount-input"
               type="text"

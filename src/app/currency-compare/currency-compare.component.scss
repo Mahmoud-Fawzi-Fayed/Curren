@@ -6,14 +6,6 @@ $brighter-blue: #9cecfb;
 $dirty-white: #efefefff;
 $brown: #3a3636;
 
-// .logo {
-//   width: 307px;
-//   height: 68.489px;
-//   flex-shrink: 0;
-//   background: url(../../assets/logo.png), 50% / cover no-repeat;
-//   margin-left: 25%;
-//   // margin-top: 10%;
-// }
 .wrapper {
   width: 669.961px;
   height: 729px;
@@ -47,7 +39,6 @@ $brown: #3a3636;
   border-radius: 34.036px;
   background: #f0f0f0;
   margin-left: 15%;
-  margin-top: 10%;
   .switch-button {
     display: flex;
     width: 204.583px;
@@ -98,7 +89,6 @@ $brown: #3a3636;
   height: 584.118px;
   flex-shrink: 0;
   margin-left: 19%;
-  // margin-top: 10%;
 }
 .groups-1 {
   width: 474.877px;
@@ -109,6 +99,14 @@ $brown: #3a3636;
   width: 222.096px;
   height: 124.199px;
   flex-shrink: 0;
+}
+.amount-1 {
+  position: absolute;
+  left: 49%;
+  bottom: 47%;
+
+  // margin-right: 86%;
+  // margin-top: -15%;
 }
 
 .text {
@@ -140,6 +138,14 @@ $brown: #3a3636;
   width: 222.096px;
   height: 121.276px;
   flex-shrink: 0;
+}
+.select-field {
+  margin-left: -25%;
+  margin-top: -4%;
+}
+.select-field-1 {
+  margin-left: -25%;
+  margin-top: 1%;
 }
 .compare {
   width: 460.265px;

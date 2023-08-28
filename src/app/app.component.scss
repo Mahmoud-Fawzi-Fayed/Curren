@@ -134,7 +134,7 @@ $brown: #3a3636;
   height: 124.199px;
   flex-shrink: 0;
   margin-top: -0.5%;
-  margin-right: -10;
+  margin-left: -35%;
 }
 .t2 {
   width: 102.539px;
@@ -171,6 +171,7 @@ $brown: #3a3636;
   height: 121.276px;
   flex-shrink: 0;
   margin-top: -3%;
+  margin-left: -14%;
 }
 // .container {
 //   width: 669.961px;
@@ -323,7 +324,7 @@ $brown: #3a3636;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: -5%;
   &:hover {
     background: #0e98d0;
@@ -423,7 +424,7 @@ $brown: #3a3636;
 .lastUpdate {
   position: absolute;
   right: 15px;
-  bottom: 10px;
+  bottom: 30%;
   font-weight: 400;
   color: white;
 }
