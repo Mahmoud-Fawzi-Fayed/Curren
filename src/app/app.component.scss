@@ -6,18 +6,25 @@ $brighter-blue: #9cecfb;
 $dirty-white: #efefefff;
 $brown: #3a3636;
 
-.container {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  overflow: auto;
-  height: 100%;
-  width: 100%;
-  min-height: 570px;
-  max-width: none;
+.wrapper {
+  width: 669.961px;
+  height: 729px;
+  flex-shrink: 0;
+  border-radius: 18.237px;
+  background: linear-gradient(
+    134deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(157, 157, 157, 0.2) 100%
+  );
+  backdrop-filter: blur(4.504402160644531px);
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 23.908px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-left: 32.5%;
+  margin-top: 2.5%;
   @include extra-small {
     background-color: $dirty-white;
   }
@@ -26,11 +33,180 @@ $brown: #3a3636;
     min-height: 710px;
   }
 }
+.Switch_CC {
+  display: flex;
+  width: 472.754px;
+  height: 81.482px;
+  padding: 15.111px;
+  justify-content: center;
+  align-items: center;
+  gap: 15.111px;
+  flex-shrink: 0;
+  border-radius: 34.036px;
+  background: #f0f0f0;
+  margin-left: 15%;
+  margin-bottom: 3%;
+  // margin-top: 10%;
+  .switch-button {
+    display: flex;
+    width: 204.583px;
+    height: 69.35px;
+    padding: 13.788px;
+    justify-content: center;
+    align-items: center;
+    // gap: 13.788px;
+    flex-shrink: 0;
+
+    background-color: $dirty-white;
+    // padding: 10px;
+    text-align: center;
+    border: none;
+    outline: none;
+    border-radius: 31.055px;
+    cursor: pointer;
+    &:focus {
+      background-color: white;
+      outline: none;
+    }
+
+    &:hover {
+      background-color: white;
+      outline: none;
+      border: none;
+      a,
+      i {
+        &.bi {
+          outline: none;
+          color: white;
+        }
+      }
+    }
+
+    a,
+    i {
+      &.bi {
+        color: white;
+        outline: none;
+      }
+    }
+  }
+}
+.groups {
+  width: 474.877px;
+  height: 584.118px;
+  flex-shrink: 0;
+  margin-left: 19%;
+  gap: 10%;
+  // margin-top: 10%;
+}
+.groups-1 {
+  width: 474.877px;
+  height: 352.14px;
+  flex-shrink: 0;
+}
+.field-1 {
+  // display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // margin-left: 5%;
+}
+.amount {
+  width: 222.096px;
+  height: 124.199px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20%;
+}
+.amount-1 {
+  width: 222.096px;
+  height: 124.199px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 1%;
+  margin-top: -15%;
+}
+.amount-2 {
+  width: 222.096px;
+  height: 124.199px;
+  flex-shrink: 0;
+  margin-top: -0.5%;
+  margin-right: -10;
+}
+.t2 {
+  width: 102.539px;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 23.908px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 10%;
+}
+.t1 {
+  width: 102.539px;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 23.908px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: -5%;
+}
+.text {
+  width: 102.539px;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 23.908px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 5%;
+}
+.select-box {
+  width: 222.096px;
+  height: 121.276px;
+  flex-shrink: 0;
+  margin-top: -3%;
+}
+// .container {
+//   width: 669.961px;
+//   height: 729px;
+//   flex-shrink: 0;
+//   border-radius: 18.237px;
+//   background: linear-gradient(
+//     134deg,
+//     rgba(0, 0, 0, 0.4) 0%,
+//     rgba(157, 157, 157, 0.2) 100%
+//   );
+//   backdrop-filter: blur(4.504402160644531px);
+//   color: #fff;
+//   font-family: Montserrat;
+//   font-size: 23.908px;
+//   font-style: normal;
+//   font-weight: 600;
+//   line-height: normal;
+//   margin-left: 32.5%;
+//   margin-top: 5%;
+//   @include extra-small {
+//     background-color: $dirty-white;
+//   }
+
+//   @include medium-down {
+//     min-height: 710px;
+//   }
+// }
 
 .result-currency {
   margin-block: 20px;
   width: 100%;
   color: white;
+  display: flex;
+  margin-top: -11%;
+  // margin-left: 10%;
 
   @include extra-small {
     width: 260px;
@@ -58,72 +234,27 @@ $brown: #3a3636;
 }
 
 .card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  align-items: center;
-  margin: auto;
-  padding: 20px;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // align-items: center;
+  // margin: auto;
+  // padding: 20px;
 
-  background: linear-gradient(
-    134deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(157, 157, 157, 0.2) 100%
-  );
-  backdrop-filter: blur(5.264404296875px);
-  width: 200px;
-  height: auto;
-  box-shadow: 0 0 10px 1px rgba(0 0 0 / 20%);
-  border-radius: 20px;
+  // background: linear-gradient(
+  //   134deg,
+  //   rgba(0, 0, 0, 0.4) 0%,
+  //   rgba(157, 157, 157, 0.2) 100%
+  // );
+  // backdrop-filter: blur(5.264404296875px);
+  // width: 200px;
+  // height: auto;
+  // box-shadow: 0 0 10px 1px rgba(0 0 0 / 20%);
+  // border-radius: 20px;
 
   @include extra-small {
     margin-bottom: 40px;
-  }
-
-  .Switch_CC {
-    margin-left: 30px;
-    width: 250px;
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-    background-color: $dirty-white;
-    border-radius: 15px;
-
-    .switch-button {
-      background-color: $dirty-white;
-      padding: 10px;
-      text-align: center;
-      border: none;
-      outline: none;
-      border-radius: 20px;
-      cursor: pointer;
-      &:focus {
-        background-color: white;
-        outline: none;
-      }
-
-      &:hover {
-        background-color: white;
-        outline: none;
-        border: none;
-        a,
-        i {
-          &.bi {
-            outline: none;
-            color: white;
-          }
-        }
-      }
-
-      a,
-      i {
-        &.bi {
-          color: white;
-          outline: none;
-        }
-      }
-    }
   }
 
   .Swi1 {
@@ -178,11 +309,28 @@ $brown: #3a3636;
   }
 }
 
-.submit-btn {
+.convert {
+  width: 460.265px;
+  height: 70.136px;
+  flex-shrink: 0;
+  background: #0e98d0;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 27.323px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 15%;
+  margin-left: -5%;
+  &:hover {
+    background: #0e98d0;
+  }
+  &:focus {
+    background: #0e98d0;
+  }
   @include medium-down {
     display: flex;
     text-align: center;

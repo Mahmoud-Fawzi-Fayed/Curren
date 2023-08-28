@@ -1,29 +1,27 @@
-<div class="wrapper" *ngIf="(appStateService.activeMode$ | async) === 'Compare'">
+<!-- <header class="logo"></header> -->
+<div
+  class="wrapper"
+  *ngIf="(appStateService.activeMode$ | async) === 'Compare'"
+>
   <form action="#">
-    <button
-    class="switch-button"
-    (click)="setActiveButton('Convert')"
-  >
-    Convert
-  </button>
-  <button
-    class="switch-button"
-    (click)="setActiveButton('Compare'); navigateToConvert()"
-  >
-    Compare
-  </button>
-  
-
-    <div class="groups" >
+    <div class="Switch_CC">
+      <button class="switch-button" (click)="setActiveButton('Convert')">
+        Convert
+      </button>
+      <button
+        class="switch-button"
+        (click)="setActiveButton('Compare')"
+        [routerLink]="['/currency-compare']"
+        routerLinkActive="active"
+      >
+        Compare
+      </button>
+    </div>
+    <div class="groups">
       <div class="group-1">
         <div class="field-1">
-
-
-
           <div class="amount">
-
             <p class="text">Amount</p>
-            
             <div class="input-amount input-field">
               <span class="prefix">{{ selectedFromCurrency }}</span>
               <input
@@ -33,7 +31,6 @@
                 name="amount"
               />
             </div>
-            
           </div>
           <div class="select-box">
             <div class="select-field">
@@ -94,4 +91,4 @@
     </div>
   </form>
 </div>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

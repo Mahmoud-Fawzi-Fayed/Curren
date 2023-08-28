@@ -16,13 +16,28 @@ body {
     rgba(13, 13, 13, 0.4) 0%,
     rgba(217, 217, 217, 0) 100%
   );
-  min-height: 100vh;
+  // min-height: 100vh;
+  // min-width: 100vh;
   background-image: url(1.png);
   background-repeat: no-repeat;
   background-size: cover;
+  // background-position: center;
   font-family: Montserrat;
-
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.logo {
+  width: 307px;
+  height: 68.489px;
+  flex-shrink: 0;
+  background: url(./assets/logo.png), 50% / cover no-repeat;
+  margin-left: 15%;
+  margin-top: 5%;
+}
