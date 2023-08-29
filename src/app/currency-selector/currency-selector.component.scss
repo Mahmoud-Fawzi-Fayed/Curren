@@ -1,4 +1,9 @@
 
+*{
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
 .currency-flag{
   border-radius: 5px;
   height: 32px;
@@ -86,4 +91,12 @@
     }
 
   }
+}
+
+
+.btn,
+input,
+.input-field,
+button{
+  width: 190px;
 }

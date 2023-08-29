@@ -11,14 +11,12 @@ import { CurrencyCompareComponent } from './currency-compare/currency-compare.co
 import { CurrenciesComponent } from './currency-selector/currencies/currencies.component';
 import { CurrencySelectorComponent } from './currency-selector/currency-selector.component';
 import { CurrencyServiceComponent } from './currency-service/currency-service.component';
-import { FavCurrComponent } from './fav-curr/fav-curr.component';
 import { LiveExecComponent } from './live-exec/live-exec.component';
-import { PopupCardComponent } from './popup/popup-card/popup-card.component';
 import { PopupComponent } from './popup/popup.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CurrenciesComponent, CurrencySelectorComponent, CurrencyCompareComponent, FavCurrComponent, PopupComponent, PopupCardComponent, LiveExecComponent,],
+  declarations: [AppComponent, CurrenciesComponent, CurrencySelectorComponent, CurrencyCompareComponent, PopupComponent, LiveExecComponent,],
   imports: [MatDialogModule, BrowserModule, AppRoutingModule, FormsModule, NgbModule, HttpClientModule, BrowserAnimationsModule],
   providers: [CurrencyServiceComponent],
   bootstrap: [AppComponent],

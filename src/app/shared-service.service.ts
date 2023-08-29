@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
     providedIn: 'root'
   })
+
   export class SharedServiceService {
     private _fromExchangeRateSubject: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
     
@@ -14,4 +15,5 @@ import { BehaviorSubject } from 'rxjs';
     setFromExchangeRate(value: number | undefined) {
       this._fromExchangeRateSubject.next(value);
     }
+
 }

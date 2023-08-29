@@ -1,86 +1,91 @@
+// live-exec.component.ts
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { CurrencyServiceComponent } from '../currency-service/currency-service.component';
 import { Currency } from '../Currency';
 import { BehaviorSubject } from 'rxjs';
 import { SharedServiceService } from '../shared-service.service';
 import { SelectedCountryService } from '../selected-country.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-live-exec',
   templateUrl: './live-exec.component.html',
   styleUrls: ['./live-exec.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LiveExecComponent implements OnInit {
   savedCountries: Currency[] = [];
-
-
   public currencyList: Currency[] = [];
   public selectedFromCurrency: Currency | undefined;
 
   private _fromExchangeRate: number | undefined;
   private _fromExchangeRateSubject: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
 
-  constructor(private currencyService: CurrencyServiceComponent,
-              private cdr: ChangeDetectorRef,
-              private SharedServiceService: SharedServiceService,
-              private selectedCountryService: SelectedCountryService) {}
+  constructor(
+    private currencyService: CurrencyServiceComponent,
+    private cdr: ChangeDetectorRef,
+    private SharedServiceService: SharedServiceService,
+    private selectedCountryService: SelectedCountryService,
+    private dialogRef: MatDialog
+  ) {}
 
-
-              updateCurrencyList(selectedCurrencies: Currency[]) {
-                this.currencyList = this.currencyList.filter(currency =>
-                  selectedCurrencies.some(selectedCurrency => selectedCurrency.name === currency.name)
-                );
-            
-                this.calculateExchangeRates();
-                this.cdr.detectChanges();
-              }
-            
-              ngOnInit(): void {
-                this.selectedCountryService.getSelectedCurrencies().subscribe((currencies: Currency[]) => {
-                  this.savedCountries = currencies;
-                  console.log('Saved countries:', this.savedCountries);
-                  this.updateCurrencyList(currencies);
-                });
-
-  
-
-  this.selectedCountryService.getSelectedCountry().subscribe((selectedCountry) => {
-    if (selectedCountry) {
-      this.selectedFromCurrency = selectedCountry;
-      this.fetchExchangeRate(selectedCountry);
-    }
-  });
-
-  this.populateCurrencyList();
-  const fromExchangeRateStr = localStorage.getItem('fromExchangeRate');
-  this.SharedServiceService.fromExchangeRate$.subscribe((rate) => {
-    this.fromExchangeRate = rate;
-  });
-
-  if (fromExchangeRateStr) {
-    this.fromExchangeRate = parseFloat(fromExchangeRateStr);
+  onDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = { top: '3rem', right: '3rem' };
+    dialogConfig.width = '400px';
+    dialogConfig.height = '600px';
+    const dialogRef = this.dialogRef.open(PopupComponent, dialogConfig);
+    dialogRef.componentInstance.selectedCurrenciesChanged.subscribe((selectedCurrencies: Currency[]) => {
+      this.updateSelectedCurrencies(selectedCurrencies);
+    });
   }
-}
 
-
-
-populateCurrencyList() {
-  this.currencyService.getCurrenciesPromise().then((currenciess: Currency[]) => {
-    this.currencyList = currenciess;
-    console.log('Currency list:', this.currencyList);
-
-    this.currencyList = this.currencyList.filter(currency =>
-      this.savedCountries.some(savedCurrency => savedCurrency.name === currency.name)
-    );
-
+  updateSelectedCurrencies(selectedCurrencies: Currency[]) {
+    this.savedCountries = selectedCurrencies;
+    this.selectedCountryService.setSelectedCurrencies(selectedCurrencies);
     this.calculateExchangeRates();
     this.cdr.detectChanges();
-  }).catch((error) => {
-    console.error('Error fetching currencies:', error);
-  });
-}
+  }
 
+  ngOnInit(): void {
+    this.loadSelectedCurrencies();
+    this.populateCurrencyList();
+
+    this.SharedServiceService.fromExchangeRate$.subscribe((rate) => {
+      this.fromExchangeRate = rate;
+      this.calculateExchangeRates();
+      this.cdr.detectChanges();
+    });
+    
+
+
+    this.selectedCountryService.getSelectedCurrencies().subscribe((selectedCurrencies: Currency[]) => {
+      this.savedCountries = selectedCurrencies;
+      this.calculateExchangeRates();
+      this.cdr.detectChanges();
+    });
+  }
+
+  loadSelectedCurrencies() {
+    this.savedCountries = this.selectedCountryService.getSelectedCurrenciesFromLocalStorage();
+    this.selectedCountryService.setSelectedCurrencies(this.savedCountries);
+  }
+
+  populateCurrencyList() {
+    this.currencyService.getCurrenciesPromise().then((currencies: Currency[]) => {
+      this.currencyList = currencies;
+
+      this.currencyList = this.currencyList.filter((currency) =>
+        this.savedCountries.some((savedCurrency) => savedCurrency.name === currency.name)
+      );
+
+      this.calculateExchangeRates();
+      this.cdr.detectChanges();
+    }).catch((error) => {
+      console.error('Error fetching currencies:', error);
+    });
+  }
 
   calculateExchangeRates() {
     if (this.selectedFromCurrency && this._fromExchangeRate !== undefined) {
@@ -92,10 +97,8 @@ populateCurrencyList() {
   }
 
   get fromExchangeRate() {
-    console.log("fromExchangeRate getter called with value:", this._fromExchangeRateSubject.value);
     return this._fromExchangeRateSubject.value;
   }
-  
 
   set fromExchangeRate(value: number | undefined) {
     if (value !== this._fromExchangeRate) {
@@ -105,26 +108,32 @@ populateCurrencyList() {
         localStorage.setItem('fromExchangeRate', value.toString());
         this.calculateExchangeRates();
         this.cdr.detectChanges();
-        console.log(this._fromExchangeRate)
       }
     }
   }
 
-  
-fetchExchangeRate(fromCurrency: Currency) {
-  if (!fromCurrency) return;
+  fetchExchangeRate(fromCurrency: Currency) {
+    if (!fromCurrency) return;
 
-  this.currencyService.getCurrenciesPromise().then(
-    (data) => {
-      const selectedCurrency = data.find((currency) => currency.name === fromCurrency.name);
-      if (selectedCurrency) {
-        this.fromExchangeRate = selectedCurrency.rate;
-        localStorage.setItem('fromExchangeRate', this.fromExchangeRate!.toString());
-        this.SharedServiceService.setFromExchangeRate(this.fromExchangeRate);
-      }
-    },
-    () => {
-    }
-  );
+    // Fetch exchange rates and populate the list
+    this.currencyService.getCurrenciesPromise().then(
+      (data) => {
+        const selectedCurrency = data.find((currency) => currency.name === fromCurrency.name);
+        if (selectedCurrency) {
+          this.fromExchangeRate = selectedCurrency.rate;
+          localStorage.setItem('fromExchangeRate', this.fromExchangeRate!.toString());
+          this.calculateExchangeRates();
+          this.currencyList = data.filter((currency) =>
+            this.savedCountries.some((savedCurrency) => savedCurrency.name === currency.name)
+          );
+          this.cdr.detectChanges();
+        }
+      },
+      () => {}
+    );
+  }
 }
+function updateSelectedCurrencies(selectedCurrencies: any, arg1: any) {
+  throw new Error('Function not implemented.');
 }
+

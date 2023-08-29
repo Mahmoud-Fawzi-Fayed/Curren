@@ -1,14 +1,16 @@
-@import "../../styles.scss";
 $blue: #417de0;
 $red: #ff5858;
 $bright-blue: #65c7f7;
 $brighter-blue: #9cecfb;
 $dirty-white: #efefefff;
 $brown: #3a3636;
-
+* {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
 .wrapper {
   width: 669.961px;
-  height: 550px;
+  height: 570px;
   flex-shrink: 0;
   border-radius: 18.237px;
   background: linear-gradient(
@@ -18,7 +20,7 @@ $brown: #3a3636;
   );
   backdrop-filter: blur(4.504402160644531px);
   color: #fff;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-size: 23.908px;
   font-style: normal;
   font-weight: 400;
@@ -28,7 +30,7 @@ $brown: #3a3636;
   font-family: Poppins;
 }
 .colcetion {
-  color: rgba(255, 255, 255, 0);
+  color: rgba(0, 0, 0, 0.00011);
 }
 .Switch_CC {
   display: flex;
@@ -42,8 +44,7 @@ $brown: #3a3636;
   border-radius: 34.036px;
   background: #f0f0f0;
   margin-left: 15%;
-  margin-bottom: 3%;
-  // margin-top: 10%;
+  margin-top: 10%;
   .switch-button {
     display: flex;
     width: 204.583px;
@@ -114,7 +115,7 @@ $brown: #3a3636;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  // margin-top: 18%;
+  margin-top: 18%;
 }
 
 .field-1 {
@@ -150,18 +151,17 @@ $brown: #3a3636;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -10%;
+  margin-top: -5%;
   margin-left: -5%;
   &:hover {
+    color: white;
     background: #0e98d0;
   }
   &:focus {
     background: #0e98d0;
   }
 }
-.input-am {
-  width: 20px !important;
-}
+
 .input-amount {
   display: flex;
   align-items: center;
@@ -182,4 +182,9 @@ $brown: #3a3636;
     background-color: white;
     outline: 2px solid rgb(153, 153, 245);
   }
+}
+
+input,
+button {
+  width: 190px;
 }

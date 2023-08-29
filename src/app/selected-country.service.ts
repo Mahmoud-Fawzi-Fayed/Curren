@@ -10,12 +10,13 @@ export class SelectedCountryService {
   private selectedCountrySubject: BehaviorSubject<Currency | undefined> = new BehaviorSubject<Currency | undefined>(undefined);
   private selectedCurrenciesSubject: BehaviorSubject<Currency[]> = new BehaviorSubject<Currency[]>([]);
 
-  setSelectedCountry(country: Currency) {
-    this.selectedCountrySubject.next(country);
+  getSelectedCurrenciesFromLocalStorage(): Currency[] {
+    const storedValue = localStorage.getItem('selectedCurrencies');
+    return storedValue ? JSON.parse(storedValue) : [];
   }
 
-  getSelectedCountry() {
-    return this.selectedCountrySubject.asObservable();
+  setSelectedCountry(country: Currency) {
+    this.selectedCountrySubject.next(country);
   }
 
   setSelectedCurrencies(currencies: Currency[]) {

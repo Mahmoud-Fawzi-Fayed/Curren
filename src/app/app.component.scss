@@ -5,10 +5,17 @@ $bright-blue: #65c7f7;
 $brighter-blue: #9cecfb;
 $dirty-white: #efefefff;
 $brown: #3a3636;
-
+*{
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24.667px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
 .wrapper {
   width: 669.961px;
-  height: 550px;
+  height: 600px;
   flex-shrink: 0;
   border-radius: 18.237px;
   background: linear-gradient(
@@ -18,7 +25,6 @@ $brown: #3a3636;
   );
   backdrop-filter: blur(4.504402160644531px);
   color: #fff;
-  font-family: Montserrat;
   font-size: 23.908px;
   font-style: normal;
   font-weight: 400;
@@ -49,7 +55,6 @@ $brown: #3a3636;
   background: #f0f0f0;
   margin-left: 15%;
   margin-bottom: 3%;
-  // margin-top: 10%;
   .switch-button {
     display: flex;
     width: 204.583px;
@@ -100,7 +105,6 @@ $brown: #3a3636;
   flex-shrink: 0;
   margin-left: 19%;
   gap: 10%;
-  // margin-top: 10%;
 }
 .groups-1 {
   width: 474.877px;
@@ -108,10 +112,8 @@ $brown: #3a3636;
   flex-shrink: 0;
 }
 .field-1 {
-  // display: flex;
   justify-content: space-between;
   align-items: center;
-  // margin-left: 5%;
 }
 .amount {
   width: 222.096px;
@@ -121,6 +123,7 @@ $brown: #3a3636;
   justify-content: space-between;
   align-items: center;
   gap: 20%;
+  margin-bottom: 10px;
 }
 .amount-1 {
   width: 222.096px;
@@ -136,7 +139,7 @@ $brown: #3a3636;
   width: 222.096px;
   height: 124.199px;
   flex-shrink: 0;
-  margin-top: -0.5%;
+  margin-top: -1%;
   margin-right: -10;
 }
 .t2 {
@@ -280,7 +283,12 @@ $brown: #3a3636;
     box-shadow: none;
     border: none;
     outline: none;
+    color: #000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 23.379px;
+    font-style: normal;
     font-weight: 600;
+    line-height: normal;
   }
   &:focus-within {
     background-color: white;
@@ -302,7 +310,7 @@ $brown: #3a3636;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
+  margin-top: 15%;
   margin-left: -5%;
   &:hover {
     background: #0e98d0;
@@ -411,6 +419,12 @@ $brown: #3a3636;
 .Result_button {
   margin-left: 80px;
   position: relative;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24.667px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 .label_result {
   margin-left: 80px;
@@ -420,13 +434,30 @@ $brown: #3a3636;
 .big-con {
   margin-bottom: 200px;
 }
-.bgc {
-  width: 1440px;
-  height: 209px;
-  // flex-shrink: 0;
-  background-color: red;
-  margin-top: 50px;
-  // margin-right: -20%;
-  position: relative;
-  right: 100%;
+.to-country{
+  margin-top: 5px;
+  width: 210px;
+}
+
+p{
+  color: #FFF;
+  font-family: 'Montserrat', sans-serif;
+font-size: 24.667px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+label{
+  color: #FFF;
+  font-family: 'Montserrat', sans-serif;
+font-size: 24.667px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+input{
+  width: 130px;
+}
+button{
+  width: 140px;
 }

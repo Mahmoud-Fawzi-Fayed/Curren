@@ -76,11 +76,12 @@ export class AppComponent implements OnInit {
     let rateBase = this.to.rate / (this.fromExchangeRate || 1);
     let result = +this.amount_value * rateBase;
     this.resultFrom = this.amount_value + this._from.name + '=';
-    this.resultTo = result.toFixed(2) + this.to.name;
+    this.resultTo = result.toFixed(2);
   }
 
   ngOnInit(): void {
     this.fetchExchangeRate(this._from);
+
 
     this.service.getCurrenciesPromise().then(
       (data) => {
@@ -127,7 +128,7 @@ export class AppComponent implements OnInit {
             'fromExchangeRate',
             this.fromExchangeRate!.toString()
           );
-          this.SharedServiceService.setFromExchangeRate(this.fromExchangeRate); // Notify the service
+          this.SharedServiceService.setFromExchangeRate(this.fromExchangeRate);
           if (this.isResult) this.exchange();
         }
       },
