@@ -2,13 +2,14 @@
 <div class="container-sm p-5" class="Marg">
   <div class="d-flex justify-content-between">
     <h2 class="d-flex justify-content-between fs-4 p-4">live exchange rates</h2>
-    <div class="d-flex justify-content-between" class="mag"></div>
-    <button
+    <div class="d-flex justify-content-between"></div>
+    <div class="dialog-container" style= "z-index: 999;">
+      <button
       class="icon-plus"
       mat-button
       (click)="onDialog()"
       style="float: left"
-      style = "margin-right: 5%;"
+      style = "margin-right: 4%;"
     >
       <img
         src="../../assets/plus.png"
@@ -17,6 +18,8 @@
       />
       Add To Favorites
     </button>
+    </div>
+
   </div>
 
   <div class="container">

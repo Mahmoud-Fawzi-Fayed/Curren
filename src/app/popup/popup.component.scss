@@ -1,46 +1,57 @@
-
-*{
-    font-family: Poppins;
-
+* {
+  font-family: Poppins;
 }
-.cur{
-    color: rgb(149, 149, 149);
+.cur {
+  color: rgb(149, 149, 149);
 }
-.icon{
-    height: 42px;
-    margin: 0 auto;
-    padding: 0;
+.icon {
+  height: 42px;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .m-2 {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 * {
-    font-family: Poppins;
-  }
-  .cur {
-    color: rgb(149, 149, 149);
-  }
-  
-  .fs-5 {
-    border-radius: 50%;
-    margin-left: -10%;
-  }
-  .m-2 {
-    border-radius: 50%;
-    width: 50.596px;
-    height: 50.534px;
-    flex-shrink: 0;
-  }
-  .form-check-input {
-    border-radius: 50%;
-    background-color: black;
-  }
-  
+  font-family: Poppins;
+}
+.cur {
+  color: rgb(149, 149, 149);
+}
 
+.fs-5 {
+  border-radius: 50%;
+  margin-left: -10%;
+}
+.m-2 {
+  border-radius: 50%;
+  width: 50.596px;
+  height: 50.534px;
+  flex-shrink: 0;
+}
+.form-check-input {
+  border-radius: 50%;
+  background-color: black;
+}
 
-.btn{
-    padding: 20px;
-    border: none;
+.btn {
+  padding: 20px;
+  border: none;
+}
+
+/* Add this to your global styles or component-specific stylesheet */
+.my-dialog-container {
+  position: fixed;
+  top: 10%;
+  left: 70%;
+  transform: translate(-10%, -10%);
+  z-index: 1000;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+  max-height: 80vh;
+  overflow: auto;
 }
