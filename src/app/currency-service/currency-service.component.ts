@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Currency } from 'src/app/Currency';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CurrencyServiceComponent {
-  private currencies: Currency[] = [];
+  private currenciess: Currency[] = [];
   private lastUpdate;
+
   constructor(private http: HttpClient) {}
 
   public getCurrencies() {
-    return this.currencies;
+    return this.currenciess;
   }
 
   public getLastUpdate() {
@@ -19,48 +21,55 @@ export class CurrencyServiceComponent {
 
   public getCurrenciesPromise() {
     return new Promise<any>((resolve, reject) => {
-      if (this.currencies.length == 0) {
-        this.http.get<any>('https://open.er-api.com/v6/latest/USD').subscribe(
-          (data) => {
-            for (var key in data.rates) {
-              var value = data.rates[key];
-              let currency: Currency = {
-                rate: value,
-                full_name: '',
-                name: key,
-              };
-              this.currencies.push(currency);
+      if (this.currenciess.length === 0) {
+        this.http.get<any>('https://bmgraduationproject-production.up.railway.app/api/v1/currencies-info/currencies')
+          .subscribe(
+            (data) => {
+              if (data && data.data) {
+                this.currenciess = data.data.map((item: { currencyCode: any; flagUrl: any; }) => {
+                  return {
+                    rate: 0,
+                    full_name: item.currencyCode,
+                    name: item.currencyCode,
+                    flagUrl: item.flagUrl,
+                  };
+                });
+                this.lastUpdate = new Date();
+                this.fetchExchangeRates(resolve, reject);
+              } else {
+                reject('Error fetching currency data');
+              }
+            },
+            (error) => {
+              reject(error);
             }
-            this.lastUpdate = data.time_last_update_utc;
-            this.http
-              .get<any>('https://restcountries.com/v3.1/all?fields=currencies')
-              .subscribe(
-                (data) => {
-                  data.forEach((currency: { currencies: { [x: string]: { name: any; }; }; }) => {
-                    let name = Object.keys(currency.currencies)[0];
-                    var index = this.currencies.findIndex(
-                      (element) => element.name == name
-                    );
-                    if (index != -1)
-                      this.currencies[index] = {
-                        ...this.currencies[index],
-                        full_name: currency.currencies[name].name,
-                      };
-                  });
-                  resolve(this.currencies);
-                },
-                () => {
-                  reject();
-                }
-              );
-          },
-          () => {
-            reject();
-          }
-        );
+          );
       } else {
-        resolve(this.currencies);
+        resolve(this.currenciess);
       }
     });
+  }
+
+  private fetchExchangeRates(resolve: any, reject: any) {
+    this.http.get<any>('https://bmgraduationproject-production.up.railway.app/api/v1/exchange-rate/currency-exchangeRate/USD')
+      .subscribe(
+        (data) => {
+          if (data && data.data) {
+            const conversionRates = data.data;
+            this.currenciess.forEach(currency => {
+              const rateInfo = conversionRates.find((rate: any) => rate.code === currency.name);
+              if (rateInfo) {
+                currency.rate = rateInfo.rate;
+              }
+            });
+            resolve(this.currenciess);
+          } else {
+            reject('Error fetching exchange rates');
+          }
+        },
+        () => {
+          reject();
+        }
+      );
   }
 }

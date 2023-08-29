@@ -3,10 +3,10 @@
     <button *ngIf="edited" class="btn" (click)="dropClick()" type="button">
       <div class="currency-flag currency-flag-{{selectedCurrency.name.toLowerCase()}}"></div>
       <div class="currency-name">{{selectedCurrency.name}}</div>
-    </button>
+    </button >
 
     <div class="input-search" *ngIf="!edited">
-      <input (click)='ShowDropdown()'  placeholder="Type to search..."
+      <input (click)='ShowDropdown()'  placeholder="search..."
         (keyup.escape)="HideDropdown()"  (focusout)="focusOutInput()"
         [ngModelOptions]="{standalone: true}"  [(ngModel)]="findCurrency"
         (ngModelChange)="valueFinding()" type="text" autofocus #search_input>

@@ -60,12 +60,14 @@
     display: flex;
     text-align: left;
     justify-content: flex-start;
+    font-weight: 50px;
     >*{
       float: left;
       box-sizing: border-box;
       justify-content: space-between;
       text-align: left;
       margin-block: auto;
+      font-weight: 50px;
     }
 
 

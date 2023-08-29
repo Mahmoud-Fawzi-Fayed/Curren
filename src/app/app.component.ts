@@ -1,8 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Currency } from './Currency';
+import { AppStateService } from './app-state-service.service';
 import { CurrencyServiceComponent } from './currency-service/currency-service.component';
+import { SharedServiceService } from './shared-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { CurrencyServiceComponent } from './currency-service/currency-service.co
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'currency-exchange';
+  activeButton: 'Convert' | 'Compare' = 'Convert';
   public isDataAvailable = false;
   public failedToLoad = false;
   private _from!: Currency;
@@ -27,31 +28,27 @@ export class AppComponent implements OnInit {
   @ViewChild('formExchange', { static: false })
   formExchange!: ElementRef;
 
-  activeButton: string = 'Convert';
-
   public resultFrom!: string;
   public resultTo!: string;
   public resultInfo!: string;
   public isResult = false;
   public lastUpdate!: string;
+  public fromExchangeRate: number | undefined;
 
   get from_name() {
     return this._from?.name;
   }
 
   constructor(
-    private router: Router,
     private modalService: NgbModal,
-    public service: CurrencyServiceComponent
+    public service: CurrencyServiceComponent,
+    public appStateService: AppStateService,
+    private currencyService: CurrencyServiceComponent,
+    private SharedServiceService: SharedServiceService
   ) {}
 
-  setActiveButton(button: string): void {
-    this.activeButton = button;
-  }
-
-  navigateToCompare(): void {
-    this.setActiveButton('Compare');
-    this.router.navigate(['/currency-compare']);
+  setActiveButton(button: 'Convert' | 'Compare') {
+    this.appStateService.setActiveMode(button);
   }
 
   public open(modal: any): void {
@@ -60,6 +57,7 @@ export class AppComponent implements OnInit {
 
   public selectFrom = (currency: Currency): void => {
     this._from = currency;
+    this.fetchExchangeRate(currency);
     if (this.isResult) this.exchange();
   };
 
@@ -74,21 +72,16 @@ export class AppComponent implements OnInit {
     if (this.isResult) this.exchange();
   }
 
-  public switchCurrencies() {
-    let temp: Currency = this._from;
-    this.fromCmp.nativeElement.selectCurrency(this.to);
-    this.toCmp.nativeElement.selectCurrency(temp);
-    if (this.isResult) this.exchange();
-  }
-
   public exchange() {
-    let rateBase = this.to.rate / this._from.rate;
+    let rateBase = this.to.rate / (this.fromExchangeRate || 1);
     let result = +this.amount_value * rateBase;
     this.resultFrom = this.amount_value + this._from.name + '=';
     this.resultTo = result.toFixed(2) + this.to.name;
   }
 
   ngOnInit(): void {
+    this.fetchExchangeRate(this._from);
+
     this.service.getCurrenciesPromise().then(
       (data) => {
         this._from = data[0];
@@ -99,6 +92,12 @@ export class AppComponent implements OnInit {
         this.failedToLoad = true;
       }
     );
+
+    let localExchangeRate = localStorage.getItem('fromExchangeRate');
+    if (localExchangeRate) {
+      this.fromExchangeRate = parseFloat(localExchangeRate);
+      this.SharedServiceService.setFromExchangeRate(this.fromExchangeRate);
+    }
 
     let localAmount = localStorage.getItem('amount');
     this.amount_value = localAmount ? localAmount : (1).toFixed(2);
@@ -114,5 +113,25 @@ export class AppComponent implements OnInit {
   windowResize(): void {
     this.submitBtn.nativeElement.style.width =
       this.formExchange.nativeElement.style.width;
+  }
+
+  fetchExchangeRate(fromCurrency: Currency) {
+    this.currencyService.getCurrenciesPromise().then(
+      (data) => {
+        const selectedCurrency = data.find(
+          (currency) => currency.name === fromCurrency.name
+        );
+        if (selectedCurrency) {
+          this.fromExchangeRate = selectedCurrency.rate;
+          localStorage.setItem(
+            'fromExchangeRate',
+            this.fromExchangeRate!.toString()
+          );
+          this.SharedServiceService.setFromExchangeRate(this.fromExchangeRate); // Notify the service
+          if (this.isResult) this.exchange();
+        }
+      },
+      () => {}
+    );
   }
 }

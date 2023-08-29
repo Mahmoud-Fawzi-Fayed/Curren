@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Currency } from '../Currency';
+import { AppStateService } from '../app-state-service.service';
 import { CurrencyServiceComponent } from '../currency-service/currency-service.component';
+
 
 @Component({
   selector: 'app-currency-compare',
@@ -8,7 +11,8 @@ import { CurrencyServiceComponent } from '../currency-service/currency-service.c
   styleUrls: ['./currency-compare.component.scss', '../../styles/default.scss'],
 })
 export class CurrencyCompareComponent {
-  currencies: Currency[] = [];
+  activeButton: 'Convert' | 'Compare' = 'Convert';
+  currenciess: Currency[] = [];
   selectedFromCurrency: string = '';
 
   selectedFirstTargetCurrency: string = '';
@@ -18,15 +22,37 @@ export class CurrencyCompareComponent {
   convertedAmountFirstTarget: number = 0;
   convertedAmountSecondTarget: number = 0;
 
-  constructor(private currencyService: CurrencyServiceComponent) {
-    this.currencies = this.currencyService.getCurrencies();
+  constructor(private currencyService: CurrencyServiceComponent,
+              private router: Router,
+              public appStateService: AppStateService) {
+    this.currenciess = this.currencyService.getCurrencies();
+  }
+
+
+  ngOnInit(): void {
+    this.currencyService.getCurrenciesPromise().then(
+      (currencies) => {
+        this.currenciess = currencies;
+      },
+    );
   }
 
   
 
-  selectFrom1 = (selectedFromCurrency: Currency): void => {
+  setActiveButton(button: 'Convert' | 'Compare') {
+    this.appStateService.setActiveMode(button);
+  }
+
+  navigateToConvert() {
+    this.router.navigate(['/']);
+  }
+  
+  
+
+  selectFrom = (selectedFromCurrency: Currency): void => {
     this.selectedFromCurrency = selectedFromCurrency.name;
   };
+  
 
   select_to_one = (selectedFirstTargetCurrency: Currency): void => {
     this.selectedFirstTargetCurrency = selectedFirstTargetCurrency.name;
@@ -36,35 +62,32 @@ export class CurrencyCompareComponent {
     this.selectedSecondTargetCurrency = selectedSecondTargetCurrency.name;
   };
 
-
   compareCurrencies(): void {
-    localStorage.setItem('storedAmount', this.amount.toString());
-
-    const fromCurrency = this.currencies.find(
+    const fromCurrency = this.currenciess.find(
       (currency) => currency.name === this.selectedFromCurrency
     );
-
-    const firstTargetCurrency = this.currencies.find(
+  
+    const firstTargetCurrency = this.currenciess.find(
       (currency) => currency.name === this.selectedFirstTargetCurrency
     );
-
-    const secondTargetCurrency = this.currencies.find(
+  
+    const secondTargetCurrency = this.currenciess.find(
       (currency) => currency.name === this.selectedSecondTargetCurrency
     );
-
+  
     if (fromCurrency && firstTargetCurrency && secondTargetCurrency) {
-      this.convertedAmountFirstTarget =
-        (this.amount * firstTargetCurrency.rate) / fromCurrency.rate;
-      this.convertedAmountSecondTarget =
-        (this.amount * secondTargetCurrency.rate) / fromCurrency.rate;
-    }
+      this.convertedAmountFirstTarget = parseFloat(
 
-  }
+        ((this.amount * firstTargetCurrency.rate) / fromCurrency.rate).toFixed(2)
+      
+        );
+      this.convertedAmountSecondTarget = parseFloat(
 
-  ngOnInit(): void {
-    const storedAmount = localStorage.getItem('storedAmount');
-    if (storedAmount !== null) {
-      this.amount = parseFloat(storedAmount);
-    }
+        ((this.amount * secondTargetCurrency.rate) / fromCurrency.rate).toFixed(2)
+      
+        );
+      }else{
+        console.error('Some currencies were not found or there was an issue.');
+      }
   }
 }
