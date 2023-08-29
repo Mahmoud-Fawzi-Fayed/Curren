@@ -1,9 +1,9 @@
 <!-- live-exec.component.html -->
 <div class="container-sm p-4">
+  <header class="img"></header>
   <div class="d-flex justify-content-between">
     <h2 class="d-flex justify-content-between fs-3 p-2">live exchange rates</h2>
-    <div class="d-flex justify-content-between">
-    </div>
+    <div class="d-flex justify-content-between"></div>
     <app-fav-curr class="p-2"></app-fav-curr>
   </div>
   <div class="container">
@@ -18,7 +18,7 @@
             <div class="cur">CURRENCY</div>
           </div>
           <div class="d-flex fs-5 align-items-center fw-bold">
-            {{ (fromExchangeRate! / currency.rate) | number:'1.2-2' }}
+            {{ fromExchangeRate! / currency.rate | number : "1.2-2" }}
           </div>
         </div>
       </div>

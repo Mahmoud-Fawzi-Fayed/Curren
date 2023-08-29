@@ -8,7 +8,7 @@ $brown: #3a3636;
 
 .wrapper {
   width: 669.961px;
-  height: 570px;
+  height: 550px;
   flex-shrink: 0;
   border-radius: 18.237px;
   background: linear-gradient(
@@ -28,7 +28,7 @@ $brown: #3a3636;
   font-family: Poppins;
 }
 .colcetion {
-  color: rgba(0, 0, 0, 0.00011);
+  color: rgba(255, 255, 255, 0);
 }
 .Switch_CC {
   display: flex;
@@ -42,7 +42,8 @@ $brown: #3a3636;
   border-radius: 34.036px;
   background: #f0f0f0;
   margin-left: 15%;
-  margin-top: 10%;
+  margin-bottom: 3%;
+  // margin-top: 10%;
   .switch-button {
     display: flex;
     width: 204.583px;
@@ -113,7 +114,7 @@ $brown: #3a3636;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-top: 18%;
+  // margin-top: 18%;
 }
 
 .field-1 {
@@ -149,7 +150,7 @@ $brown: #3a3636;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -5%;
+  margin-top: -10%;
   margin-left: -5%;
   &:hover {
     background: #0e98d0;
@@ -158,7 +159,9 @@ $brown: #3a3636;
     background: #0e98d0;
   }
 }
-
+.input-am {
+  width: 20px !important;
+}
 .input-amount {
   display: flex;
   align-items: center;

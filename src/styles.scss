@@ -21,11 +21,16 @@ body {
   background-size: 100vw 100vh;
   background-position: center;
   font-family: Montserrat;
-
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .logo {
   width: 307px;
@@ -34,4 +39,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: url(./assets/logo.png), 50% / cover no-repeat;
   margin-left: 15%;
   margin-top: 4%;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 15%;
+  background-color: #00c6ff;
 }

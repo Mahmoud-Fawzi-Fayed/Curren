@@ -8,7 +8,7 @@ $brown: #3a3636;
 
 .wrapper {
   width: 669.961px;
-  height: 600px;
+  height: 550px;
   flex-shrink: 0;
   border-radius: 18.237px;
   background: linear-gradient(
@@ -302,7 +302,7 @@ $brown: #3a3636;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: -5%;
   &:hover {
     background: #0e98d0;
@@ -419,4 +419,14 @@ $brown: #3a3636;
 
 .big-con {
   margin-bottom: 200px;
+}
+.bgc {
+  width: 1440px;
+  height: 209px;
+  // flex-shrink: 0;
+  background-color: red;
+  margin-top: 50px;
+  // margin-right: -20%;
+  position: relative;
+  right: 100%;
 }

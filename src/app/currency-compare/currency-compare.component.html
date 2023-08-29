@@ -3,29 +3,30 @@
   class="wrapper"
   *ngIf="(appStateService.activeMode$ | async) === 'Compare'"
 >
+<div class="colcetion">mmm</div>
+<div class="Switch_CC">
+  <button class="switch-button" (click)="setActiveButton('Convert')">
+    Convert
+  </button>
+  <button
+    class="switch-button"
+    (click)="setActiveButton('Compare')"
+    [routerLink]="['/currency-compare']"
+    routerLinkActive="active"
+  >
+    Compare
+  </button>
+</div>
   <form >
-    <div class="Switch_CC">
-      <button class="switch-button" (click)="setActiveButton('Convert')">
-        Convert
-      </button>
-      <button
-        class="switch-button"
-        (click)="setActiveButton('Compare')"
-        [routerLink]="['/currency-compare']"
-        routerLinkActive="active"
-      >
-        Compare
-      </button>
-    </div>
     <div class="groups">
       <div class="group-1">
         <div class="field-1">
           <div class="amount">
             <p class="text">Amount</p>
-            <div class="input-amount input-field">
+            <div class="input-amount input-field ">
               <!-- <span class="prefix">{{ selectedFromCurrency }}</span> -->
               <input
-                class="amount-input"
+                class="amount-input input-am"
                 type="number"
                 [(ngModel)]="amount"
                 name="amount"
