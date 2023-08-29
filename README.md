@@ -1,4 +1,4 @@
-![Screenshot 2023-08-29 182042](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/2ecd2433-7228-46a7-8e83-291bbd4ed9aa)# CurrenSee
+![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/29237e7c-1711-4369-bd2b-1448a6b16aa1) #CurrenSee
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
 
 Welcome to the CurrenSee Tool! This Angular project allows you to convert between currencies, compare them, and stay updated with live exchange rates. Additionally, you can save your favorite currencies for quick access.
@@ -35,9 +35,11 @@ ng serve
 - Dropdown Countries in one component and I called it in covert and compare components
 
 ## Screenshots
-![Screenshot 2023-08-29 182042](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/881ac6da-80df-42a0-982f-1322b9a691d4)
-![Screenshot 2023-08-29 191108](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/9277e6b4-d541-4660-8f88-40b6843dca5b)
-![Screenshot 2023-08-29 191148](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/895250f3-0704-41a2-bd9f-aaf922d153f1)
+![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/f3d81765-61b8-405d-a868-dbd6c5783a6b)
+![Screenshot 2023-08-29 194935](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/1946e468-4dce-490d-b53d-6b5a43de3772)
+![Screenshot 2023-08-29 195007](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/195600f5-c7e8-4ac5-bfe9-c544bc981084)
+![Screenshot 2023-08-29 195018](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/a28af1d1-719b-45d8-8789-c34d91fc75dd)
+
 
 
 
