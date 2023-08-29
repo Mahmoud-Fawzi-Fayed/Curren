@@ -1,12 +1,15 @@
 <!-- live-exec.component.html -->
 <div class="container-sm p-4">
-  <header class="img"></header>
+  <header class="img">
+    <div class="logo"></div>
+  </header>
   <div class="d-flex justify-content-between">
     <h2 class="d-flex justify-content-between fs-3 p-2">live exchange rates</h2>
     <div class="d-flex justify-content-between"></div>
     <app-fav-curr class="p-2"></app-fav-curr>
   </div>
   <div class="container">
+    <label class="text">My Portfolio</label>
     <div class="row row-cols-2">
       <div class="col" *ngFor="let currency of savedCountries">
         <div class="d-flex border-bottom container-sm">
