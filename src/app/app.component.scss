@@ -5,9 +5,9 @@ $bright-blue: #65c7f7;
 $brighter-blue: #9cecfb;
 $dirty-white: #efefefff;
 $brown: #3a3636;
-*{
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Montserrat', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 24.667px;
   font-style: normal;
   font-weight: 600;
@@ -15,7 +15,7 @@ $brown: #3a3636;
 }
 .wrapper {
   width: 669.961px;
-  height: 600px;
+  height: 550px;
   flex-shrink: 0;
   border-radius: 18.237px;
   background: linear-gradient(
@@ -122,8 +122,9 @@ $brown: #3a3636;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20%;
+  gap: 10%;
   margin-bottom: 10px;
+  margin-top: -5%;
 }
 .amount-1 {
   width: 222.096px;
@@ -140,7 +141,17 @@ $brown: #3a3636;
   height: 124.199px;
   flex-shrink: 0;
   margin-top: -1%;
-  margin-right: -10;
+}
+.t {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 23.908px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.section {
+  margin-top: -5%;
 }
 .t2 {
   width: 102.539px;
@@ -164,19 +175,19 @@ $brown: #3a3636;
 }
 .text {
   width: 102.539px;
-  color: #fff;
   font-family: Montserrat;
+  margin-bottom: 5%;
+  color: #fff;
   font-size: 23.908px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-bottom: 5%;
 }
 .select-box {
   width: 222.096px;
   height: 121.276px;
   flex-shrink: 0;
-  margin-top: -3%;
+  margin-top: -5%;
 }
 .container {
   width: 669.961px;
@@ -284,7 +295,7 @@ $brown: #3a3636;
     border: none;
     outline: none;
     color: #000;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 23.379px;
     font-style: normal;
     font-weight: 600;
@@ -302,7 +313,6 @@ $brown: #3a3636;
   flex-shrink: 0;
   background: #0e98d0;
   color: #fff;
-  font-family: Montserrat;
   font-size: 27.323px;
   font-style: normal;
   font-weight: 700;
@@ -310,7 +320,7 @@ $brown: #3a3636;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 5%;
   margin-left: -5%;
   &:hover {
     background: #0e98d0;
@@ -419,8 +429,8 @@ $brown: #3a3636;
 .Result_button {
   margin-left: 80px;
   position: relative;
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 24.667px;
   font-style: normal;
   font-weight: 600;
@@ -434,30 +444,30 @@ $brown: #3a3636;
 .big-con {
   margin-bottom: 200px;
 }
-.to-country{
+.to-country {
   margin-top: 5px;
   width: 210px;
 }
 
-p{
-  color: #FFF;
-  font-family: 'Montserrat', sans-serif;
-font-size: 24.667px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+p {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24.667px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-label{
-  color: #FFF;
-  font-family: 'Montserrat', sans-serif;
-font-size: 24.667px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+label {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24.667px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-input{
+input {
   width: 130px;
 }
-button{
+button {
   width: 140px;
 }

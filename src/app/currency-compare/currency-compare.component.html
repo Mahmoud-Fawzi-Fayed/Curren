@@ -3,7 +3,8 @@
   class="wrapper"
   *ngIf="(appStateService.activeMode$ | async) === 'Compare'"
 >
-  <form >
+  <div class="colcetion">mmm</div>
+  <form>
     <div class="Switch_CC">
       <button class="switch-button" (click)="setActiveButton('Convert')">
         Convert
@@ -13,7 +14,7 @@
         (click)="setActiveButton('Compare')"
         [routerLink]="['/currency-compare']"
         routerLinkActive="active"
-        >
+      >
         Compare
       </button>
     </div>
@@ -22,14 +23,13 @@
         <div class="field-1">
           <div class="amount">
             <p class="text">Amount</p>
-            <div class="input-amount input-field" style="width: 190px;">
-              <!-- <span class="prefix">{{ selectedFromCurrency }}</span> -->
+            <div class="input-amount input-field" style="width: 190px">
               <input
                 class="amount-input"
                 type="number"
                 [(ngModel)]="amount"
                 name="amount"
-                style="width: 190px;"
+                style="width: 190px"
               />
             </div>
           </div>
@@ -47,7 +47,7 @@
 
         <div class="field-1">
           <div class="select-box">
-            <p>Target currency</p>
+            <p class="text-1">Target currency</p>
 
             <app-currency-selector
               #to
@@ -56,8 +56,8 @@
             ></app-currency-selector>
           </div>
 
-          <div class="select-box">
-            <p>Target currency</p>
+          <div class="select-box-2">
+            <p class="text-1">Target currency</p>
 
             <app-currency-selector
               #to
@@ -75,17 +75,17 @@
               [(ngModel)]="convertedAmountFirstTarget"
               [readonly]="true"
               name="convertedAmountFirstTarget"
-              style="width: 190px;"
+              style="width: 190px"
             />
           </div>
-          <div class="amount">
+          <div class="amount-1">
             <input
               class="amount-input"
               type="text"
               [(ngModel)]="convertedAmountSecondTarget"
               [readonly]="true"
               name="convertedAmountSecondTarget"
-              style="width: 190px;"
+              style="width: 190px"
             />
           </div>
         </div>

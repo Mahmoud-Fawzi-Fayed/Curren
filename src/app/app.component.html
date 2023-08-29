@@ -23,9 +23,7 @@
               <p class="t1">Amount</p>
               <div class="amount">
                 <div class="input-amount input-field">
-                  <!-- <span class="prefix">{{ from_name }}</span> -->
                   <input
-                    class="amount-inpu"
                     required
                     lang="en-US"
                     type="number"
@@ -37,31 +35,32 @@
                   />
                 </div>
                 <div class="select-box">
-                  <p>From</p>
+                  <p class="t">From</p>
                   <app-currency-selector
-                  class="from-country"
+                    class="from-country"
                     #from
                     [selectorId]="'from'"
                     [changeCurrency]="selectFrom"
-                    style="width: 210px;"
                   ></app-currency-selector>
                 </div>
               </div>
             </div>
+            <div class="section">
             <p class="t2">To</p>
             <div class="amount-1">
               <app-currency-selector
-              class="to-country"
+                class="to-country"
                 #to
                 [selectorId]="'to'"
                 [changeCurrency]="selectTo"
               ></app-currency-selector>
               <div class="amount-2">
-                <label class="text">Amount</label>
+                <label class="text" >Amount</label>
                 <div class="Resul_button">
-                  <button class="Resul_button" >{{ resultTo }}</button>
+                  <button class="Resul_button">{{ resultTo }}</button>
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div [style.width.px]="formExchange" #submitBtn>

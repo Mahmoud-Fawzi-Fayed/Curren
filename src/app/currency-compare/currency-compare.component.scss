@@ -10,7 +10,7 @@ $brown: #3a3636;
 }
 .wrapper {
   width: 669.961px;
-  height: 570px;
+  height: 550px;
   flex-shrink: 0;
   border-radius: 18.237px;
   background: linear-gradient(
@@ -27,10 +27,11 @@ $brown: #3a3636;
   line-height: normal;
   margin-left: 32.5%;
   margin-top: 2.5%;
-  font-family: Poppins;
+  font-family: Montserrat;
 }
 .colcetion {
   color: rgba(0, 0, 0, 0.00011);
+  margin-bottom: -10%;
 }
 .Switch_CC {
   display: flex;
@@ -101,10 +102,15 @@ $brown: #3a3636;
   height: 352.14px;
   flex-shrink: 0;
 }
-.amount {
+.amount,
+.amount-1 {
   width: 222.096px;
   height: 124.199px;
   flex-shrink: 0;
+}
+.amount-1 {
+  position: relative;
+  right: 8%;
 }
 
 .text {
@@ -115,7 +121,16 @@ $brown: #3a3636;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-top: 18%;
+  margin-top: 10%;
+}
+.text-1 {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 20.456px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-top: -5%;
 }
 
 .field-1 {
@@ -128,14 +143,20 @@ $brown: #3a3636;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: relative;
-  // top: 10%;
-  margin-top: -8%;
+  margin-top: -10%;
 }
 .select-box {
   width: 222.096px;
   height: 121.276px;
   flex-shrink: 0;
+}
+.select-box-2 {
+  margin-top: -8%;
+  margin-left: -5%;
+}
+.select-field {
+  margin-left: -15%;
+  margin-top: -1%;
 }
 .compare {
   width: 460.265px;
@@ -143,7 +164,7 @@ $brown: #3a3636;
   flex-shrink: 0;
   background: #0e98d0;
   color: #fff;
-  font-family: Montserrat;
+  // font-family: Montserrat;
   font-size: 27.323px;
   font-style: normal;
   font-weight: 700;
