@@ -1,5 +1,7 @@
 ![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/29237e7c-1711-4369-bd2b-1448a6b16aa1) #CurrenSee
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
+![icons8-typescript-24](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/b2ca801d-b68f-4a79-baec-510ede90a17b)
+![icons8-angular-48](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/a5c0de21-6252-44cb-a00e-c32b25a6ffdd)
 
 Welcome to the CurrenSee Tool! This Angular project allows you to convert between currencies, compare them, and stay updated with live exchange rates. Additionally, you can save your favorite currencies for quick access.
 
