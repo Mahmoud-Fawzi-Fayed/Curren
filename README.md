@@ -1,5 +1,10 @@
-![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/29237e7c-1711-4369-bd2b-1448a6b16aa1) #CurrenSee
+ ![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/4d166be2-9571-4d46-a4e0-67ab8a9f5894)
+#CurrenSee
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
+
+
+![icons8-angular-48](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/a5c0de21-6252-44cb-a00e-c32b25a6ffdd)
+
 
 Welcome to the CurrenSee Tool! This Angular project allows you to convert between currencies, compare them, and stay updated with live exchange rates. Additionally, you can save your favorite currencies for quick access.
 
@@ -35,10 +40,12 @@ ng serve
 - Dropdown Countries in one component and I called it in covert and compare components
 
 ## Screenshots
-![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/f3d81765-61b8-405d-a868-dbd6c5783a6b)
-![Screenshot 2023-08-29 194935](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/1946e468-4dce-490d-b53d-6b5a43de3772)
-![Screenshot 2023-08-29 195007](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/195600f5-c7e8-4ac5-bfe9-c544bc981084)
-![Screenshot 2023-08-29 195018](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/a28af1d1-719b-45d8-8789-c34d91fc75dd)
+![Screenshot 2023-08-29 195018](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/a84350a4-2a51-437e-a23b-cde4fee9b910)
+![Screenshot 2023-08-29 195007](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/a499d7b1-edbb-4699-992e-18dd7a61f0cb)
+![Screenshot 2023-08-29 194935](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/bda7bb78-1b31-4a82-acbf-04e0cac9069a)
+![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/f4a46b8a-f22f-4e9c-93b5-9e50785e1d4e)
+![Screenshot 2023-08-31 095504](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/357d008c-bebe-4c60-8d7a-a71b88ec5da7)
+
 
 
 
