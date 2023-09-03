@@ -1,4 +1,7 @@
  ![Screenshot 2023-08-29 194851](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/4d166be2-9571-4d46-a4e0-67ab8a9f5894)
+
+ ![Dia web_Front-end](https://github.com/Mahmoud-Fawzi-Fayed/Curren/assets/100167897/466f814d-4a6b-48be-bfda-7f43750e059a)
+
 #CurrenSee
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
 
